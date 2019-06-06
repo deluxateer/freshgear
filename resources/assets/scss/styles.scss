@@ -189,3 +189,60 @@ header {
     color: #fff;
   }
 }
+
+#cart-popup {
+  background: #f2f6f7;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  .cart-items {
+    .item {
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      padding: 70px 20px;
+
+      img {
+        position: absolute;
+        left: -41px;
+        width: 100%;
+        transform: rotate(90deg);
+      }
+      
+      .delete-btn {
+        background: #fff;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+        border-radius: 30px;
+        cursor: pointer;
+        
+        &:hover {
+          .circle {
+            background: red;
+          }
+        }
+      }
+
+      .circle {
+        background: #f2f6f7;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: #fff;
+        transition: background .4s ease-in-out;
+      }
+    }
+  }
+}
