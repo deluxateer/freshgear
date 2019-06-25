@@ -18,3 +18,5 @@ const Route = use('Route')
 
 Route.get('/', 'PageController.home');
 Route.get('/about', 'PageController.about');
+
+Route.get('/products', 'ProductController.index')

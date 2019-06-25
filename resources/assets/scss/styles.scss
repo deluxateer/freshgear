@@ -2,6 +2,7 @@
 @import "reset";
 @import "pages/home";
 @import "pages/about";
+@import "products/_all";
 
 
 // body {
@@ -106,9 +107,18 @@ header {
 
   .logo {
     font-weight: 700;
-    color: #484c4f;
     font-size: 2rem;
     text-transform: uppercase;
+    
+    a {
+      color: #484c4f;
+      text-decoration: none;
+      transition: color .2s ease-in-out;
+
+      &:hover {
+        color: red;
+      }
+    }
   }
 
   .menu {
@@ -120,6 +130,11 @@ header {
       color: #484c4f;
       padding-right: 15px;
       text-decoration: none;
+      transition: color .2s ease-in-out;
+
+      &:hover {
+        color: red;
+      }
 
       &.cart-link {
         background: #484c4f;
