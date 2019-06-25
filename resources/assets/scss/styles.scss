@@ -206,6 +206,12 @@ header {
   z-index: 10;
   display: grid;
   grid-template-columns: 5% 50% 1fr 1fr 1fr;
+  transform: translate3d(0, 500px, 0);
+  transition: transform .4s ease-in-out;
+
+  &.active {
+    transform: translate3d(0, 0, 0);
+  }
 
   .cart-title {
     width: 100px;
@@ -305,6 +311,27 @@ header {
       color: #b6bfc6;
       font-size: 2rem;
       font-weight: 700;
+    }
+  }
+  .checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fafafa;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-direction: column;
+    cursor: pointer;
+
+    &:hover {
+      .ti-shopping-cart {
+        color: red;
+      }
+    }
+
+    .title {
+      margin-bottom: 1.2rem;
     }
   }
 }
