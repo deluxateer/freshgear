@@ -36,8 +36,8 @@ Freshgear | All Products
       <label class="title" for="price-options">Price</label>
       <div class="content">
         <div class="price">
-          <div class="option">Male</div>
-          <div class="option">Female</div>
+          <input class="option" type="text" name="min" placeholder="min" />
+          <input class="option" type="text" name="max" placeholder="max" />
         </div>
       </div>
     </div>
@@ -67,6 +67,7 @@ Freshgear | All Products
         </div>
       </div>
     </div>
+    <button>Filter</button>
   </div>
   <div class="all-products-grid">
     @each(product in products)
