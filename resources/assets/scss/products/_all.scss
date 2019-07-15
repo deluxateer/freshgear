@@ -3,16 +3,119 @@
   grid-template-columns: 25% 1fr;
   padding: 100px 0 0;
   height: 100vh;
+  overflow: hidden;
 
   .filter-section {
-    background: grey;
+    .toggle {
+      display: none;
+
+      &:checked {
+        & + .title + .content {
+          max-height: 200px;
+          overflow-x: hidden;
+          overflow-y: scroll;
+        }
+
+        & + .title:before {
+          transform: rotate(90deg) !important;
+        }
+      }
+    }
+
+    .filter {
+      position: relative;
+      margin-bottom: 2rem;
+      padding: 0 20px;
+    }
+
+    .title,
+    .content {
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      transition: all 0.2s;
+    }
+
+    .title {
+      background: #fff;
+      padding: 1rem;
+      display: block;
+      color: #000;
+      font-weight: 700;
+      margin-bottom: 1rem;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 1.25em;
+        right: 1.25em;
+        width: 2px;
+        height: 0.75em;
+        background-color: #000;
+        transition: all 0.2s;
+      }
+
+      &:after {
+        transform: rotate(90deg);
+      }
+    }
+
+    .content {
+      max-height: 0;
+      overflow: hidden;
+
+      .gender {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        list-style: none;
+        text-align: center;
+      }
+
+      .brand {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        list-style: none;
+        text-align: center;
+      }
+
+      .size {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        list-style: none;
+        text-align: center;
+      }
+
+      .option {
+        border: 1px solid #fff;
+        padding: 10px;
+        display: inline-block;
+        color: grey;
+        transition: all 0.2s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover,
+        &.selected {
+          background: red;
+          color: #fff;
+          font-weight: 700;
+          border: 1px solid red;
+        }
+      }
+    }
   }
 
   .all-products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     position: relative;
+    padding: 0 20px;
+    overflow-y: scroll;
 
     .product-wrap {
       text-align: center;
