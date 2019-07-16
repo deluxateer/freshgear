@@ -1,15 +1,33 @@
 @layout('layouts/main')
 
 @section('title')
-Freshgear | Top Kicks
+Freshgear | Login
 @endsection
 
 @section('content')
-<section class="content-area about-page">
+<section class="content-area login_register-page">
   <div class="container">
     <div class="box-container">
       <h1>About</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit facilis, ut magnam quae ipsa recusandae tempora natus distinctio, eaque culpa, quia molestiae laudantium at corrupti magni perspiciatis expedita voluptatibus quas tempore deleniti soluta quos! Quisquam, sed perferendis voluptatum provident repellat ipsa ex impedit magnam sunt, incidunt necessitatibus. Sint, quidem. Repudiandae, voluptatem officiis! Quasi dolor quisquam exercitationem odit, aut ullam esse! Itaque sapiente corporis, expedita aliquid ex esse saepe quibusdam aperiam? Corrupti voluptas minima esse porro officia rem modi! Ratione exercitationem quibusdam rerum eos voluptatum enim iure, doloribus consequatur a ipsa dicta error, eaque sint debitis ullam molestiae nemo temporibus tempora.</p>
+      <h2>Register</h2>
+      <div class="login-grid">
+        <div class="form">
+          <form action="" method="POST">
+            <input type="email" name="email">
+            <input type="password" name="password">
+            <a href="/account/forgot-password">Forgot Password</a>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+        <div class="social-accounts">
+          <a href="#!"><span class="ti-google"></span> Google</a>
+          <a href="#!"><span class="ti-facebook"></span> Facebook</a>
+          <a href="#!"><span class="ti-twitter"></span> Twitter</a>
+        </div>
+      </div>
+      <div class="sign-up">
+        Need an account? <a href="/register">Sign Up</a>
+      </div>
     </div>
   </div>
 </section>

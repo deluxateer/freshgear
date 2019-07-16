@@ -14,14 +14,14 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use('Route');
 
 Route.get('/', 'PageController.home');
 Route.get('/about', 'PageController.about');
 
-Route.get('/products', 'ProductController.index')
-Route.get('/products/new-arrivals', 'ProductController.newArrivals')
+Route.get('/products', 'ProductController.index');
+Route.get('/products/new-arrivals', 'ProductController.newArrivals');
 
 // User Authentication
-Route.get('/products/register', 'ProductController.newArrivals')
-Route.get('/products/login', 'ProductController.newArrivals')
+Route.get('/register', 'UserController.register');
+Route.get('/login', 'UserController.login');
