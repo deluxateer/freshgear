@@ -6,17 +6,80 @@
     margin: 0 auto;
   }
 
-  h1 {
-    font-size: 3rem;
+  h2 {
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 2rem;
   }
 
-  p {
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.5;
-    font-size: 1.2rem;
-    font-weight: 300;
+  .login-grid {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    grid-gap: 20px;
+
+    .line {
+      width: 2px;
+      height: 100%;
+      background: #e5e5e5;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+
+      input[type="email"],
+      input[type="password"] {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding: 10px;
+        border: 1px solid #6c6c6c;
+      }
+
+      a {
+        margin-bottom: 1rem;
+      }
+
+      button {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding: 10px;
+        background-color: rgb(27, 108, 206);
+        border: none;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    .social-accounts {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        background: #e5e5e5;
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+        margin-bottom: 1rem;
+        color: rgb(31, 31, 31);
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+
+  .footer {
+    margin: 1rem auto;
+    text-align: center;
+    color: #6c6c6c;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
