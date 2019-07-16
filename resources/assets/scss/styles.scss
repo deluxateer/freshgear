@@ -316,3 +316,25 @@ header {
   background: #fff;
   padding: 80px 20px;
 }
+
+form {
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #6c6c6c;
+  }
+  
+  button {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: 10px;
+    background-color: rgb(27, 108, 206);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+}

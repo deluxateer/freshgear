@@ -2,7 +2,7 @@
 
 class UserController {
   register({ view }) {
-    return view.render('account/register/');
+    return view.render('account/register');
   }
 
   login({ view }) {
