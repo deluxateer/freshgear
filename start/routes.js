@@ -23,6 +23,9 @@ Route.get('/products', 'ProductController.index');
 Route.get('/:brand/:subcategory/:slug', 'ProductController.show');
 Route.get('/products/new-arrivals', 'ProductController.newArrivals');
 
+// Cart
+Route.get('/cart/checkout', 'CartController.checkout');
+
 // User Authentication
 Route.get('/register', 'UserController.register');
 Route.get('/login', 'UserController.login');
