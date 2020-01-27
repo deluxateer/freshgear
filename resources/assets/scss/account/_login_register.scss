@@ -1,75 +1,68 @@
-.content-area.login_register-page {
+.content-area.login_register-page{
   padding: 120px 0;
-
-  .box-container {
+  .box-container{
     max-width: 700px;
     margin: 0 auto;
   }
-
-  h2 {
+  h2{
     font-size: 2rem;
     text-align: center;
     margin-bottom: 2rem;
   }
 
-  .login-grid {
+  .login-grid{
     display: grid;
-
-    &.login {
+    &.login{
       grid-template-columns: 1fr 2px 1fr;
-      grid-gap: 20px;
+    grid-gap: 20px;
+    }
+    &.register{
+      grid-template-columns: 1fr;
+    grid-gap: 20px;
     }
     
-    &.register {
-      grid-template-columns: 1fr;
-      grid-gap: 20px;
-    }
-
-    .line {
+    .line{
       width: 2px;
       height: 100%;
       background: #e5e5e5;
     }
-    
-    form {
+    form{
       display: flex;
       flex-direction: column;
-
-      a {
+      
+      a{
         margin-bottom: 1rem;
       }
+      
     }
-
-    .social-accounts {
+    .social-accounts{
       display: flex;
       flex-direction: column;
-
-      a {
+      a{
         background: #e5e5e5;
         width: 100%;
         font-size: 1rem;
         padding: 10px;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem;
+        text-align: center;
         color: rgb(31, 31, 31);
         text-decoration: none;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        span {
-          margin-right: 15px;
+        span{
+          margin: 0 15px 0 0;
         }
       }
     }
+    
   }
-
-  .footer {
-    margin: 1rem auto;
-    text-align: center;
-    color: #6c6c6c;
-
-    a {
-      text-decoration: none;
-    }
+  .footer{
+      margin: 1rem auto;
+      text-align: center;
+      color: #6c6c6c;
+      a{
+        text-decoration: none;
+      }
   }
 }

@@ -16,11 +16,12 @@ compress.unused = true;
 module.exports = env => {
 	return {
 		entry: {
-			FirstComp: './resources/assets/js/FirstComp.js',
+			CartComponents: './resources/assets/js/CartComponents.js',
+			ProductAddToCart: './resources/assets/js/components/ProductAddToCart.js'
 		},
 		output: {
 			path: path.resolve(__dirname, 'public/js/dist'),
-			filename: '[name].js' // '[name].[chunkhash].js' put this if you want to get hashed files to cache bust
+			filename: '[name].js'
 		},
 		module: {
 			rules: [
@@ -44,9 +45,9 @@ module.exports = env => {
 		plugins: [
 			new CleanWebpackPlugin('public/js/dist', {}),
 			new MiniCssExtractPlugin({
+				// '[name].[chunkhash].js' put this if you want to get hashed files to cache bust
 				filename: 'styles.css' // 'style.[contenthash].css' put this if you want to get hashed files to cache bust
-			}),
-			// new HtmlWebpackPlugin({
+			}), // new HtmlWebpackPlugin({
 			// 	inject: false,
 			// 	hash: true,
 			// 	template: './assets/index.html',
@@ -57,8 +58,13 @@ module.exports = env => {
 		],
 		optimization: {
 			splitChunks: {
-				chunks: 'all',
-				minSize: 0
+				cacheGroups: {
+					vendor: {
+						test: /[\\/]node_modules[\\/](react|react-dom|axios)[\\/]/,
+						name: 'vendors',
+						chunks: 'all'
+					}
+				}
 			},
 			minimize: true,
 			minimizer: [

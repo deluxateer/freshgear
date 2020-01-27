@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 class CartController {
-  checkout({view}) {
-    return view.render('cart/checkout');
-  }
+	checkout({ view }) {
+		return view.render('cart/checkout');
+	}
 }
 
-module.exports = CartController
+module.exports = CartController;

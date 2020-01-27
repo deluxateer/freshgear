@@ -19,14 +19,13 @@ gulp.task('default', ['webpack', 'styles', 'browser-sync'], () => {
 		.on('change', reload);
 });
 
-gulp.task('watch-proxy', ['styles', 'browser-sync-proxy'], () => {
+gulp.task('watch-proxy', ['webpack', 'styles', 'browser-sync-proxy'], () => {
 	gulp.watch('./resources/assets/scss/**/*', ['styles']);
-	// gulp.watch('./resources/assets/js/**/*', ['webpack']);
+	gulp.watch('./resources/assets/js/**/*', ['webpack']);
 	gulp
 		.watch([
 			'./public/**/*',
 			'./public/*',
-			'./public/views/**/*',
 			'./resources/views/**/*',
 			'!public/js/**/.#*js',
 			'!public/css/**/.#*css'
@@ -36,7 +35,7 @@ gulp.task('watch-proxy', ['styles', 'browser-sync-proxy'], () => {
 
 gulp.task('styles', () => {
 	gulp
-		.src('./resources/assets/scss/**/*.scss')
+		.src('resources/assets/scss/**/*.scss')
 		.pipe(
 			sass({
 				outputStyle: 'compressed'
@@ -51,7 +50,7 @@ gulp.task('styles', () => {
 		.pipe(browserSync.stream());
 });
 
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', function() {
 	browserSync.init({
 		server: './public',
 		notify: false,
@@ -59,19 +58,21 @@ gulp.task('browser-sync', function () {
 	});
 });
 
-gulp.task('browser-sync-proxy', function () {
+gulp.task('browser-sync-proxy', function() {
 	// THIS IS FOR SITUATIONS WHEN YOU HAVE ANOTHER SERVER RUNNING
 	browserSync.init({
 		proxy: {
 			target: 'http://localhost:3333/', // can be [virtual host, sub-directory, localhost with port]
 			ws: true // enables websockets
-		}
+		},
+		notify: false,
+		open: false //change this to true if you want the broser to open automatically
 		// serveStatic: ['.', './public']
 	});
 });
 
 gulp.task('webpack', cb => {
-	exec('npm run dev:webpack', function (err, stdout, stderr) {
+	exec('npm run dev:webpack', function(err, stdout, stderr) {
 		console.log(stdout);
 		console.log(stderr);
 		cb(err);
@@ -79,7 +80,7 @@ gulp.task('webpack', cb => {
 });
 
 gulp.task('build', ['styles'], cb => {
-	exec('npm run build:webpack', function (err, stdout, stderr) {
+	exec('npm run build:webpack', function(err, stdout, stderr) {
 		console.log(stdout);
 		console.log(stderr);
 		cb(err);
