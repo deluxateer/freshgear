@@ -5,6 +5,7 @@
 @import "products/all";
 @import "products/single";
 @import "cart/checkout";
+@import "account/account";
 @import "account/login_register";
 
 
@@ -100,6 +101,7 @@ body {
 }
 
 header {
+  background-color: #e3e8ec;
   position: fixed;
   display: flex;
   justify-content: space-between;
