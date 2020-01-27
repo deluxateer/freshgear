@@ -1,18 +1,55 @@
 @layout('layouts/main')
 
 @section('title')
-Freshgear | Account
+Freshgear | Orders
 @endsection
 
 @section('content')
 <section class="content-area account-page">
   <div class="container">
     <div class="box-container">
-      <h1>Account</h1>
+      <h1>Orders</h1>
       <hr />
       <div class="checkout-grid">
         <div class="forms">
-          Welcome to your account
+          <div class="order-list">
+            <table>
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>Price</td>
+                  <td>Date</td>
+                  <td>Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>123123123</td>
+                  <td>$3,300</td>
+                  <td>1/28/2019</td>
+                  <td><span class="tag shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>123123123</td>
+                  <td>$3,300</td>
+                  <td>1/28/2019</td>
+                  <td><span class="tag shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>123123123</td>
+                  <td>$3,300</td>
+                  <td>1/28/2019</td>
+                  <td><span class="tag shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>123123123</td>
+                  <td>$3,300</td>
+                  <td>1/28/2019</td>
+                  <td><span class="tag canceled">Canceled</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="sub-menu">
           @include('account/sub-menu')
