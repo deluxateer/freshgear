@@ -9,7 +9,7 @@ class AuthController {
     return view.render('account/register');
   }
   
-  async storeUser({ response, request, view }) {
+  async storeUser({ response, request, view, session }) {
     // validation of input fields
     const validation = await validate(request.all(), {
       email: 'required|email|unique:users,email',
@@ -21,6 +21,8 @@ class AuthController {
     if(request.input('password') === request.input('confirm_password')) {
       // check if validations of other fields fail else save user
       if(validation.fails()) {
+        session.withErrors(validation.messages()).flashExcept(['password', 'confirm_password']);
+
         response.redirect('back');
       } else {
         // try to save user to db
@@ -33,10 +35,22 @@ class AuthController {
           return err;
         }
 
+        session.flash({ notification: 'Welcome to Fresh Gear!' });
         return response.redirect('/');
       }
     } else {
-      return 'Passwords do not match.';
+      session.withErrors([
+        {
+          field: 'password',
+          message: 'Need to confirm password',
+        },
+        {
+          field: 'confirm_password',
+          message: 'Need to confirm password',
+        },
+      ]).flashExcept(['password', 'confirm_password']);
+
+      return response.redirect('back');
     }
   }
 

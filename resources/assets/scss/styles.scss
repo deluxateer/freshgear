@@ -222,6 +222,14 @@ header{
   padding: 80px 20px;
 }
 form{
+  .error-message {
+    position: relative;
+    top: -9px;
+    color: red;
+  }
+  input.error {
+    border: 1px solid red !important;
+  }
   input[type="password"], input[type="email"], input[type="text"]{
         width: 100%;
         margin: 0 0 1rem;
