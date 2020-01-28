@@ -35,7 +35,7 @@ class AuthController {
           return err;
         }
 
-        session.flash({ notification: 'Welcome to Fresh Gear!' });
+        session.flash({ success: 'Welcome to Fresh Gear!' });
         return response.redirect('/');
       }
     } else {
