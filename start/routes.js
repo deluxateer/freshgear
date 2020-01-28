@@ -31,5 +31,5 @@ Route.get('/cart/checkout', 'CartController.checkout');
 Route.get('/account', 'UserController.index');
 Route.get('/account/change-password', 'UserController.changePassword');
 Route.get('/account/orders', 'UserController.orders');
-Route.get('/register', 'UserController.register');
-Route.get('/login', 'UserController.login');
+Route.get('/register', 'AuthController.register');
+Route.get('/login', 'AuthController.login');
