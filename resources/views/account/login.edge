@@ -10,7 +10,8 @@ Freshgear | Login
     <div class="box-container">
       <h2>Log In</h2>
       <div class="login-grid login">
-        <form action="" method="POST">
+        <form action="/login" method="POST">
+          {{ csrfField() }}
           <input type="email" name="email" placeholder="Email"/>
           <input type="password" name="password" placeholder="Password"/>
           <a href="/account/forgot-password">Forgot Password</a>

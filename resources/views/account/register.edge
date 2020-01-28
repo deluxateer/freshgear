@@ -10,9 +10,11 @@ Freshgear | Login
     <div class="box-container">
       <h2>Register</h2>
       <div class="login-grid register">
-        <form action="" method="POST">
+        <form action="/register" method="POST">
+          {{ csrfField() }}
           <input type="email" name="email" placeholder="Email"/>
           <input type="password" name="password" placeholder="Password"/>
+          <input type="password" name="confirm_password" placeholder="Confirm Password"/>
       
 
           <button type="submit">Register</button>
