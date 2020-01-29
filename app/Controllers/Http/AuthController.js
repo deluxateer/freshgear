@@ -1,8 +1,10 @@
 'use strict'
 
-const { validate, sanitize } = use('Validator');
+const { validate } = use('Validator');
 const Hash = use('Hash');
 const User = use('App/Models/User');
+const Database = use('Database');
+const sanitize = use('sqlstring');
 
 class AuthController {
   async register({ response, request, view }) {
@@ -58,8 +60,54 @@ class AuthController {
     return view.render('account/login');
   }
 
-  async handleLogin({ response, request, view }) {
-    return view.render('account/register');
+  async handleLogin({ response, request, view, auth, session }) {
+    // capture data from form
+    const postData = request.post();
+    let user = await Database.raw(`
+      SELECT * FROM freshgear.users WHERE users.email = "${postData.email}" LIMIT 1;
+    `);
+    user = user[0][0];
+
+    if(user) {
+      // verify the password
+      const passwordVerified = await Hash.verify(postData.password, user.password);
+
+      if(passwordVerified) {
+        // login the user
+        await auth.loginViaId(user.id);
+        session.flash({ success: 'You are logged in!' });
+
+        return response.redirect('/');
+      } else {
+        session.withErrors([{
+          field: 'password', message: 'Incorrect Password',
+        }]).flashExcept(['password'])
+
+        return response.redirect('back');
+      }
+    } else {
+      session.withErrors([{
+        field: 'email', message: 'Cannot find user with that email',
+      }]).flashExcept(['email'])
+
+      return response.redirect('back');
+    }
+
+    // return user;
+  }
+
+  async logout({ response, request, view, auth, session }) {
+    try {
+      await auth.logout();
+      session.flash({ success: 'You are logged out!' });
+  
+      return response.redirect('/');
+    } catch(err) {
+      console.log(err);
+      session.flash({ error: 'There was a problem logging you out' });
+  
+      return response.redirect('/');
+    }
   }
 }
 
