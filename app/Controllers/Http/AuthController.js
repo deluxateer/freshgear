@@ -64,7 +64,7 @@ class AuthController {
     // capture data from form
     const postData = request.post();
     let user = await Database.raw(`
-      SELECT * FROM freshgear.users WHERE users.email = "${postData.email}" LIMIT 1;
+      SELECT * FROM freshgear.users WHERE users.email = ${sanitize.escape(postData.email)} LIMIT 1;
     `);
     user = user[0][0];
 
