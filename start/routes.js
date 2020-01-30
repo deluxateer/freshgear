@@ -36,3 +36,6 @@ Route.post('/register', 'AuthController.storeUser');
 Route.get('/login', 'AuthController.login');
 Route.post('/login', 'AuthController.handleLogin');
 Route.get('/logout', 'AuthController.logout');
+
+// Admin
+Route.get('/admin', 'Admin/AdminController.index');
