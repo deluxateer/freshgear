@@ -66,7 +66,7 @@ class ProductSeeder {
       console.log(err);
     }
     
-    console.log('Added products to products table')
+    console.log('Added products to products table');
   }
 }
 

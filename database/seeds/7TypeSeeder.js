@@ -138,7 +138,7 @@ class TypeSeeder {
       console.log(err);
     }
 
-    console.log('Added type to types table')
+    console.log('Added type to types table');
   }
 }
 
