@@ -48,6 +48,40 @@ class TypeController {
       return response.redirect('back');
     }
   }
+
+  async edit({ view, auth, request, response, params }) {
+    try {
+      let type = await Database.raw(`
+        SELECT * FROM types WHERE id = ${params.id}
+      `);
+
+      type = type[0][0];
+
+      return view.render('admin/products/types/edit_type', { type });
+    } catch(err) {
+      console.log(err);
+
+      return response.redirect('back');
+    }
+  }
+  async update({ view, auth, request, response, params }) {
+    try {
+      const post = request.post();
+      await Database.raw(`
+        UPDATE types
+        SET
+        title = ${sanitize.escape(post.title)},
+        description = ${sanitize.escape(post.description)}
+        WHERE id = ${params.id}
+      `);
+
+      return response.redirect(`/admin/products/types/${params.id}/edit`);
+    } catch(err) {
+      console.log(err);
+
+      return response.redirect('back');
+    }
+  }
 }
 
 module.exports = TypeController
