@@ -19,6 +19,10 @@ const Route = use('Route');
 Route.get('/', 'PageController.home');
 Route.get('/about', 'PageController.about');
 
+// Admin
+Route.get('/admin', 'Admin/AdminController.index');
+Route.get('/admin/products/types', 'Admin/Products/TypeController.index');
+
 // Products
 Route.get('/products', 'ProductController.index');
 Route.get('/:brand/:subcategory/:slug', 'ProductController.show');
@@ -37,5 +41,3 @@ Route.get('/login', 'AuthController.login');
 Route.post('/login', 'AuthController.handleLogin');
 Route.get('/logout', 'AuthController.logout');
 
-// Admin
-Route.get('/admin', 'Admin/AdminController.index');

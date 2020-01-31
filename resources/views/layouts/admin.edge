@@ -67,7 +67,7 @@
                                 <ul class="collapse">
                                     <li class="active"><a href="#">All Products</a></li>
                                     <li><a href="#">Create Products</a></li>
-                                    <li><a href="#">Product Types</a></li>
+                                    <li><a href="/admin/products/types">Product Types</a></li>
                                     <li><a href="#">Categories</a></li>
                                     <li><a href="#">Tags</a></li>
                                 </ul>
@@ -190,13 +190,7 @@
             <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Dashboard</h4>
-                            <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Dashboard</span></li>
-                            </ul>
-                        </div>
+                        @!section('breadcrumbs')
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
@@ -213,17 +207,8 @@
             </div>
             <!-- page title area end -->
             <div class="main-content-inner">
-              <div class="mt-5 mb-5">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="card">
-                      <div class="card-body">
-                        @!section('content')
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                @!section('content')
+
             </div>
         </div>
         <!-- main content area end -->
