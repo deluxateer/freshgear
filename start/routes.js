@@ -27,6 +27,7 @@ Route.post('/admin/products/types', 'Admin/Products/TypeController.store');
 Route.get('/admin/products/types/create', 'Admin/Products/TypeController.create');
 Route.put('/admin/products/types/:id', 'Admin/Products/TypeController.update');
 Route.get('/admin/products/types/:id/edit', 'Admin/Products/TypeController.edit');
+Route.get('/admin/products/types/:id/delete', 'Admin/Products/TypeController.delete');
 
 
 // Products

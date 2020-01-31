@@ -50,12 +50,12 @@ Types | Freshgear
                               <td>
                                   <ul class="d-flex justify-content-center">
                                       <li class="mr-3">
-                                        <a href="types/{{type.id}}" class="text-secondary">
+                                        <a href="/admin/products/types/{{type.id}}/edit" class="text-secondary">
                                           <i class="fa fa-edit"></i>
                                         </a>
                                       </li>
                                       <li>
-                                        <a href="types/{{type.id}}/delete" class="text-danger">
+                                        <a href="/admin/products/types/{{type.id}}/delete" onclick="return confirm('Are you sure you want to delete?');" class="text-danger">
                                           <i class="ti-trash"></i>
                                         </a>
                                       </li>

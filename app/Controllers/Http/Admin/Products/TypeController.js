@@ -82,6 +82,21 @@ class TypeController {
       return response.redirect('back');
     }
   }
+  async delete({ view, auth, request, response, params }) {
+    try {
+      const post = request.post();
+      await Database.raw(`
+        DELETE FROM types
+        WHERE id = ${params.id}
+      `);
+
+      return response.redirect(`/admin/products/types`);
+    } catch(err) {
+      console.log(err);
+
+      return response.redirect('back');
+    }
+  }
 }
 
 module.exports = TypeController
