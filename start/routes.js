@@ -21,7 +21,11 @@ Route.get('/about', 'PageController.about');
 
 // Admin
 Route.get('/admin', 'Admin/AdminController.index');
+// Admin/Products/Types
 Route.get('/admin/products/types', 'Admin/Products/TypeController.index');
+Route.post('/admin/products/types', 'Admin/Products/TypeController.store');
+Route.get('/admin/products/types/create', 'Admin/Products/TypeController.create');
+
 
 // Products
 Route.get('/products', 'ProductController.index');
