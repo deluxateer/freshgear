@@ -28,11 +28,21 @@ Types | Freshgear
             </h4>
             <div class="form-group">
               <label for="title" class="col-form-label">Title</label>
-              <input class="form-control" type="text" name="title" id="title">
+              <input class="form-control" type="text" name="title" id="title" value="{{ old('title', '') }}">
+              @if(hasErrorFor('title'))
+                <small class="form-text form-muted" style="color:red !important;">
+                  {{ getErrorFor('title') }}
+                </small>
+              @endif
             </div>
             <div class="form-group">
               <label for="description" class="col-form-label">Description</label>
-              <textarea class="form-control" name="description" id="description"></textarea>
+              <textarea class="form-control" name="description" id="description" value="{{ old('description', '') }}"></textarea>
+              @if(hasErrorFor('description'))
+                <small class="form-text form-muted" style="color:red !important;">
+                  {{ getErrorFor('description') }}
+                </small>
+              @endif
             </div>
             <button class="btn btn-primary" type="submit">Submit form</button>
           </form>

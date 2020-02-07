@@ -207,10 +207,21 @@
                     </div>
                 </div>
             </div>
+            <div class="notication">
+                @if(flashMessage('notification'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>Well Done!</strong> {{ flashMessage('notification') }}
+                    </div>
+                @endif
+                @if(flashMessage('errors'))
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Oops!</strong> {{ flashMessage('errors') }}
+                    </div>
+                @endif
+            </div>
             <!-- page title area end -->
             <div class="main-content-inner">
                 @!section('content')
-
             </div>
         </div>
         <!-- main content area end -->

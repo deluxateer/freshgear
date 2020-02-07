@@ -2,6 +2,7 @@
 
 const Database = use('Database');
 const sanitize = use('sqlstring');
+const { validate } = use('Validator');
 
 class TypeController {
   async index({ view, auth, request, response }) {
@@ -31,7 +32,22 @@ class TypeController {
     }
   }
 
-  async store({ view, auth, request, response }) {
+  async store({ view, auth, request, response, session }) {
+    const rules = {
+      title: 'required|unique:types,title',
+      description: 'required',
+    };
+
+    const validation = await validate(request.all(), rules);
+    if (validation.fails()) {
+      session
+        .withErrors(validation.messages())
+        .flashAll();
+
+      session.flash({ errors: 'Sorry. There was a problem.'});
+      return response.redirect('back');
+    }
+
     try {
       const post = request.post();
       await Database.raw(`
@@ -41,6 +57,7 @@ class TypeController {
         )
       `);
 
+      session.flash({ notification: 'You have successfully submitted changes.'});
       return response.redirect('/admin/products/types');
     } catch(err) {
       console.log(err);
@@ -64,7 +81,22 @@ class TypeController {
       return response.redirect('back');
     }
   }
-  async update({ view, auth, request, response, params }) {
+  async update({ view, auth, request, response, params, session }) {
+    const rules = {
+      title: 'required',
+      description: 'required',
+    };
+
+    const validation = await validate(request.all(), rules);
+    if (validation.fails()) {
+      session
+        .withErrors(validation.messages())
+        .flashAll();
+
+      session.flash({ errors: 'Sorry. There was a problem.'});
+      return response.redirect('back');
+    }
+
     try {
       const post = request.post();
       await Database.raw(`
@@ -75,6 +107,7 @@ class TypeController {
         WHERE id = ${params.id}
       `);
 
+      session.flash({ notification: 'You have successfully submitted changes.'});
       return response.redirect(`/admin/products/types/${params.id}/edit`);
     } catch(err) {
       console.log(err);
